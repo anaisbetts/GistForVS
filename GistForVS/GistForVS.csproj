@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hammock">
+      <HintPath>..\packages\Hammock.1.2.6\lib\net40\Hammock.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Expression.Interactions" />
     <Reference Include="Microsoft.Reactive.Testing, Version=1.1.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Rx_Experimental-Testing.1.1.10621\lib\Net4-Full\Microsoft.Reactive.Testing.dll</HintPath>
@@ -54,7 +57,7 @@
     <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf">
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
+    <Reference Include="Newtonsoft.Json, Version=4.0.2.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -67,9 +70,6 @@
     </Reference>
     <Reference Include="ReactiveUI.Xaml">
       <HintPath>..\packages\reactiveui-xaml.2.4.0.0\lib\Net4\ReactiveUI.Xaml.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>..\packages\RestSharp.101.3\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
