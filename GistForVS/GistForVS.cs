@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using GistForVS.Views;
 using Microsoft.VisualStudio.Text.Editor;
 
 namespace GistForVS
