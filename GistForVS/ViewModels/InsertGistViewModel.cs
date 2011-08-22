@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reactive.Linq;
 using System.Windows;
+using GistForVS.Models.GitHub.Api;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 
@@ -24,6 +25,14 @@ namespace GistForVS.ViewModels
 
         public InsertGistViewModel()
         {
+            //var client = new GitHubClient() { Username = "octocat", Password = "FillMeInHere" };
+
+            CreateGist = new ReactiveAsyncCommand();
+
+            var result = CreateGist.RegisterAsyncObservable(_ =>
+                client.CreateGist(SelectionText, !IsPrivateGist));
+
+            result.Subscribe(x => MessageBox.Show(x.html_url));
         }
     }
 }

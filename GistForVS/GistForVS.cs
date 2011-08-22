@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
+using System.Reactive.Concurrency;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using GistForVS.Views;
 using Microsoft.VisualStudio.Text.Editor;
+using ReactiveUI;
 
 namespace GistForVS
 {
@@ -24,6 +26,7 @@ namespace GistForVS
         /// <param name="view">The <see cref="IWpfTextView"/> upon which the adornment will be drawn</param>
         public GistForVS(IWpfTextView view)
         {
+            RxApp.TaskpoolScheduler = Scheduler.ThreadPool;
             _view = view;
 
             Brush brush = new SolidColorBrush(Colors.BlueViolet);

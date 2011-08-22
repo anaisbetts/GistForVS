@@ -109,10 +109,11 @@
 						<DropShadowEffect Color="#FFD2D2D2" Opacity="0.5"/>
 					</Image.Effect>
 				</Image>
+
 				<StackPanel x:Name="stackPanel" Grid.Row="1" Orientation="Vertical"  Margin="0,16,0,0">
-					<CheckBox Content="Create Private Gist"/>
-					<Button Content="Create" Style="{DynamicResource LinkButton}" HorizontalAlignment="Right" Margin="0,8,0,0" FontSize="14.667"/>
-					
+					<CheckBox Content="Create Private Gist" IsChecked="{Binding IsPrivateGist}"/>
+					<Button Content="Create" Style="{DynamicResource LinkButton}" HorizontalAlignment="Right" Margin="0,8,0,0" FontSize="14.667" 
+                            Command="{Binding CreateGist}" />
 				</StackPanel>
 			</Grid>
 		</Border>

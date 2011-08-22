@@ -91,6 +91,8 @@
   <ItemGroup>
     <Compile Include="GistForVS.cs" />
     <Compile Include="GistForVSFactory.cs" />
+    <Compile Include="Models\GistObjects.cs" />
+    <Compile Include="Models\GitHubClient.cs" />
     <Compile Include="ViewModels\InsertGistViewModel.cs" />
     <Compile Include="Views\InsertGistControl.xaml.cs">
       <DependentUpon>InsertGistControl.xaml</DependentUpon>

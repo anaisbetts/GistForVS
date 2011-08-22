@@ -21,6 +21,8 @@ namespace GistForVS.Views
 
 			this.InitializeComponent();
 
+		    LayoutRoot.DataContext = ViewModel;
+
 		    var enter = Observable.FromEventPattern<MouseEventHandler, MouseEventArgs>(x => MouseEnter += x, x => MouseEnter -= x);
 		    var exit = Observable.FromEventPattern<MouseEventHandler, MouseEventArgs>(x => MouseLeave += x, x => MouseLeave -= x);
 
