@@ -13,7 +13,7 @@ namespace GistForVS
     /// </summary>
     class GistForVS
     {
-        private FrameworkElement _image;
+        private InsertGistControl _control;
         private IWpfTextView _view;
         private IAdornmentLayer _adornmentLayer;
 
@@ -42,7 +42,13 @@ namespace GistForVS
             DrawingImage drawingImage = new DrawingImage(drawing);
             drawingImage.Freeze();
 
-            _image = new InsertGistControl(); //new Image();
+            _control = new InsertGistControl(); //new Image();
+            view.Selection.SelectionChanged += (o, e) =>
+            {
+                var sel = (ITextSelection)o;
+                _control.ViewModel.SelectionText = String.Join("", 
+                    sel.SelectedSpans.Select(x => x.GetText()));
+            };
             //_image.Source = drawingImage;
 
             //Grab a reference to the adornment layer that this adornment should be added to
@@ -58,11 +64,11 @@ namespace GistForVS
             _adornmentLayer.RemoveAllAdornments();
 
             //Place the image in the top right hand corner of the Viewport
-            Canvas.SetLeft(_image, _view.ViewportRight - _image.ActualWidth - 16);
-            Canvas.SetTop(_image, _view.ViewportTop + 16);
+            Canvas.SetLeft(_control, _view.ViewportRight - 148 /*XXX: HACK*/ - 16);
+            Canvas.SetTop(_control, _view.ViewportTop + 16);
 
             //add the image to the adornment layer and make it relative to the viewport
-            _adornmentLayer.AddAdornment(AdornmentPositioningBehavior.ViewportRelative, null, null, _image, null);
+            _adornmentLayer.AddAdornment(AdornmentPositioningBehavior.ViewportRelative, null, null, _control, null);
         }
     }
 }
