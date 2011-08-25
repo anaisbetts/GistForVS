@@ -23,6 +23,7 @@ namespace GistForVS
         static GistForVS()
         {
             Application.ResourceAssembly = typeof (GistForVS).Assembly;
+            RxApp.TaskpoolScheduler = Scheduler.ThreadPool;
         }
 
         /// <summary>
