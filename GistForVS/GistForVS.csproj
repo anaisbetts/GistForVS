@@ -38,7 +38,10 @@
     <Reference Include="Hammock">
       <HintPath>..\packages\Hammock.1.2.6\lib\net40\Hammock.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ext\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Reactive.Testing, Version=1.1.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Rx_Experimental-Testing.1.1.10621\lib\Net4-Full\Microsoft.Reactive.Testing.dll</HintPath>
     </Reference>
@@ -65,9 +68,6 @@
     <Reference Include="ReactiveUI">
       <HintPath>..\packages\reactiveui-core.2.4.0.0\lib\Net4\ReactiveUI.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI.Blend">
-      <HintPath>..\packages\reactiveui-xaml.2.4.0.0\lib\Net4\ReactiveUI.Blend.dll</HintPath>
-    </Reference>
     <Reference Include="ReactiveUI.Xaml">
       <HintPath>..\packages\reactiveui-xaml.2.4.0.0\lib\Net4\ReactiveUI.Xaml.dll</HintPath>
     </Reference>
@@ -83,7 +83,10 @@
     <Reference Include="System.Reactive.Windows.Threading, Version=1.1.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Rx_Experimental-Xaml.1.1.10621\lib\Net4\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
-    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ext\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />

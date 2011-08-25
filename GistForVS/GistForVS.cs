@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reactive.Concurrency;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -18,6 +19,11 @@ namespace GistForVS
         private InsertGistControl _control;
         private IWpfTextView _view;
         private IAdornmentLayer _adornmentLayer;
+
+        static GistForVS()
+        {
+            Application.ResourceAssembly = typeof (GistForVS).Assembly;
+        }
 
         /// <summary>
         /// Creates a square image and attaches an event handler to the layout changed event that
