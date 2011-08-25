@@ -27,7 +27,14 @@ namespace GistForVS.ViewModels
             get { return _PublicPrivateIcon.Value; }
         }
 
+        string _LastGistUrl;
+        public string LastGistUrl {
+            get { return _LastGistUrl;  }
+            set { this.RaiseAndSetIfChanged(x => x.LastGistUrl, value); }
+        }
+
         public ReactiveAsyncCommand CreateGist { get; protected set; }
+        public ReactiveCommand CopyToClipboard { get; protected set; }
 
         public InsertGistViewModel()
         {
@@ -42,10 +49,18 @@ namespace GistForVS.ViewModels
 
             CreateGist = new ReactiveAsyncCommand();
 
-            var result = CreateGist.RegisterAsyncObservable(_ =>
-                client.CreateGist(SelectionText, !IsPrivateGist));
+            CreateGist.RegisterAsyncObservable(_ => client.CreateGist(SelectionText, !IsPrivateGist))
+                .Select(x => x.html_url)
+                .BindTo(this, x => x.LastGistUrl);
 
-            result.Subscribe(x => MessageBox.Show(x.html_url));
+            CopyToClipboard = new ReactiveCommand(
+                this.WhenAny(x => x.LastGistUrl, x => !String.IsNullOrWhiteSpace(x.Value)));
+
+            CopyToClipboard.Subscribe(_ => Clipboard.SetText(LastGistUrl));
+
+            this.WhenAny(x => x.SelectionText, x => x.Value)
+                .Where(_ => LastGistUrl != null)
+                .Subscribe(_ => LastGistUrl = null);
         }
     }
 }

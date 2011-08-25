@@ -26,8 +26,14 @@ namespace GistForVS.Views
 		    var enter = Observable.FromEventPattern<MouseEventHandler, MouseEventArgs>(x => MouseEnter += x, x => MouseEnter -= x);
 		    var exit = Observable.FromEventPattern<MouseEventHandler, MouseEventArgs>(x => MouseLeave += x, x => MouseLeave -= x);
 
+		    string currentOpenState = null;
+		    Observable.Merge(
+                    ViewModel.WhenAny(x => x.SelectionText, _ => "Base"),
+                    ViewModel.WhenAny(x => x.LastGistUrl, _ => "GistPosted").Where(x => x != null))
+		        .Subscribe(x => currentOpenState = x);
+
 		    var inRegionState = Observable.Merge(
-		        enter.Select(_ => "Base"),
+		        enter.Select(_ => currentOpenState),
 		        exit.Select(_ => "ButtonMode")).StartWith("ButtonMode");
 
             var viewState = Observable.CombineLatest(
@@ -36,6 +42,10 @@ namespace GistForVS.Views
                 (hasSelection, selectionState) => hasSelection ? selectionState : "NoSelection");
 
 		    viewState.Subscribe(x => VisualStateManager.GoToElementState(LayoutRoot, x, true));
+
+		    ViewModel.WhenAny(x => x.LastGistUrl, x => x.Value)
+		        .Where(x => !String.IsNullOrWhiteSpace(x))
+		        .Subscribe(_ => VisualStateManager.GoToElementState(LayoutRoot, "GistPosted", true));
 		}
 	}
 }

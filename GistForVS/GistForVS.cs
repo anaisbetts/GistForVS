@@ -35,22 +35,6 @@ namespace GistForVS
             RxApp.TaskpoolScheduler = Scheduler.ThreadPool;
             _view = view;
 
-            Brush brush = new SolidColorBrush(Colors.BlueViolet);
-            brush.Freeze();
-            Brush penBrush = new SolidColorBrush(Colors.Red);
-            penBrush.Freeze();
-            Pen pen = new Pen(penBrush, 0.5);
-            pen.Freeze();
-
-            //draw a square with the created brush and pen
-            System.Windows.Rect r = new System.Windows.Rect(0, 0, 30, 30);
-            Geometry g = new RectangleGeometry(r);
-            GeometryDrawing drawing = new GeometryDrawing(brush, pen, g);
-            drawing.Freeze();
-
-            DrawingImage drawingImage = new DrawingImage(drawing);
-            drawingImage.Freeze();
-
             _control = new InsertGistControl(); //new Image();
             view.Selection.SelectionChanged += (o, e) =>
             {

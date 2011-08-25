@@ -35,8 +35,6 @@ namespace GistForVS.Models
                 userAgent = string.Format("GitHubWindows/{0}", Assembly.GetExecutingAssembly().GetName().Version);
             }
 
-            #region Public Properties
-
             public string Password
             {
                 get { return password; }
@@ -78,13 +76,9 @@ namespace GistForVS.Models
                 set { username = value; }
             }
 
-            #endregion
-
             //
             // Sync versions of Async Functions
             //
-
-            #region Public Methods
 
 #if FALSE
             public RestResponse<GitHubRepository> CreateRepository(GitHubRepository repo, string orgLogin = null)
@@ -128,33 +122,16 @@ namespace GistForVS.Models
 
                 return RestClient.RequestAsync<GistModel>(rq)
                     .ThrowOnRestResponseFailure()
-                    .Select(x => x.ContentEntity);
+                    .Select(x => x.ContentEntity)
+                    .Catch(Observable.Return(GetErrorGistModel()));
             }
 
-            public static void Test()
+            public GistModel GetErrorGistModel()
             {
-                var res = new RestClient { Authority = authority, UserAgent = userAgent }.Request(new RestRequest { Path = "octocat" });
-                Trace.WriteLine(res.Content);
+                return new GistModel() {
+                    html_url = "[An error has occured]",
+                };
             }
-
-            #endregion
-
-            #region Private Methods
-
-            IObservable<RestResponse<TResponse>> ExecuteRequestAsync<TResponse>(string path) where TResponse : class
-            {
-                var request = new RestRequest { Path = path, };
-
-                var response = RestClient.RequestAsync<TResponse>(request);
-
-                return response.Do(resp =>
-                {
-                    RateLimit = Int32.Parse(resp.Headers["X-RateLimit-Limit"]);
-                    RateLimitRemaining = Int32.Parse(resp.Headers["X-RateLimit-Remaining"]);
-                });
-            }
-
-            #endregion
         }
     }
 
