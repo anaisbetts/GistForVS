@@ -33,8 +33,9 @@ namespace GistForVS.Views
 		        .Subscribe(x => currentOpenState = x);
 
 		    var inRegionState = Observable.Merge(
-		        enter.Select(_ => currentOpenState),
-		        exit.Select(_ => "ButtonMode")).StartWith("ButtonMode");
+                    enter.Select(_ => currentOpenState),
+                    exit.Select(_ => "ButtonMode")).StartWith("ButtonMode")
+		        .Throttle(TimeSpan.FromMilliseconds(800), RxApp.DeferredScheduler);
 
             var viewState = Observable.CombineLatest(
                 ViewModel.WhenAny(x => x.SelectionText, x => !String.IsNullOrWhiteSpace(x.Value)),

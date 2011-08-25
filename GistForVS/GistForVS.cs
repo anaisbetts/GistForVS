@@ -33,10 +33,10 @@ namespace GistForVS
         /// <param name="view">The <see cref="IWpfTextView"/> upon which the adornment will be drawn</param>
         public GistForVS(IWpfTextView view)
         {
-            RxApp.TaskpoolScheduler = Scheduler.ThreadPool;
             _view = view;
 
             _control = new InsertGistControl(); //new Image();
+            RxApp.DeferredScheduler = new DispatcherScheduler(_control.Dispatcher);
             view.Selection.SelectionChanged += (o, e) =>
             {
                 var sel = (ITextSelection)o;
