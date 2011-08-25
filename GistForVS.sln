@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GistForVS", "GistForVS\GistForVS.csproj", "{03860D71-DA4D-4C66-A635-4ED605CFF0EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GistForVS.Tests", "GistForVS.Tests\GistForVS.Tests.csproj", "{94F3A039-95AF-429C-AF20-EF8EC35DFEEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{03860D71-DA4D-4C66-A635-4ED605CFF0EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03860D71-DA4D-4C66-A635-4ED605CFF0EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03860D71-DA4D-4C66-A635-4ED605CFF0EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94F3A039-95AF-429C-AF20-EF8EC35DFEEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94F3A039-95AF-429C-AF20-EF8EC35DFEEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94F3A039-95AF-429C-AF20-EF8EC35DFEEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94F3A039-95AF-429C-AF20-EF8EC35DFEEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
