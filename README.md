@@ -10,3 +10,5 @@ I haven't finished this, due to a frustrating Assembly Load bug in Visual
 Studio (VS will *sometimes* throw while loading the add-in, very difficult to
 debug). However, several people were interested in this as a starting point,
 so I'm releasing it so others can hack on it if they're interested.
+
+In other words, don't judge me on the quality of this code :)
