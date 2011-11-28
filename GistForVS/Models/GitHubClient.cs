@@ -32,7 +32,7 @@ namespace GistForVS.Models
 
             static GitHubClient()
             {
-                userAgent = string.Format("GitHubWindows/{0}", Assembly.GetExecutingAssembly().GetName().Version);
+                userAgent = string.Format("GistForVS/{0}", Assembly.GetExecutingAssembly().GetName().Version);
             }
 
             public string Password
